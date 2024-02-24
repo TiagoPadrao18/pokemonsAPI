@@ -87,7 +87,7 @@ const setPokemon = (pokemonName) => {
 
 
 for (let key in pokemons) {
-  pokemons[key].addEventListener("click", function() {
+  pokemons[key].addEventListener("click", ()=> {
     switch (key) {
       case "pokemon1":
         setPokemon("flareon");
