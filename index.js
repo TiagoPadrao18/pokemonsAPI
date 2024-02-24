@@ -6,6 +6,7 @@ const pokemons = {
 }
 
 const card = document.getElementById("card");
+const  buttonDrop = document.getElementById("buttonDrop");
 
 const statusPokemon = {
   title: document.getElementById("title"),
@@ -62,9 +63,12 @@ const getPokemon1 = async (pokemonName) => {
   }
 };
 
-function myFunction() {
+buttonDrop.addEventListener("click",()=>{
   document.getElementById("myDropdown").classList.toggle("show");
-}
+
+});
+
+
 
 const setPokemon = (pokemonName) => {
   getPokemon1(pokemonName).then((pokemonData) => {
