@@ -1,4 +1,11 @@
-console.clear();
+const pokemons = {
+  pokemon1: document.getElementById("pokemon1"),
+  pokemon2: document.getElementById("pokemon2"),
+  pokemon3: document.getElementById("pokemon3"),
+  pokemon4: document.getElementById("pokemon4")
+}
+
+const card = document.getElementById("card");
 
 const statusPokemon = {
   title: document.getElementById("title"),
@@ -14,16 +21,13 @@ const statusPokemon = {
   defense: document.getElementById("defense"),
   ability: document.getElementById("ability"),
   hodenAbility: document.getElementById("hodenAbility")
-
 };
 
-console.log("ola");
-
-const getPokemon = async () => {
+const getPokemon1 = async (pokemonName) => {
   try {
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon/flareon");
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
     const data = await response.json();
-    const pokemonName = data.name;
+    const name = data.name;
     const pokemonAbility = data.abilities[0].ability.name;
     const image = data.sprites.front_default;
     const life = data.stats[0].base_stat;
@@ -37,11 +41,8 @@ const getPokemon = async () => {
     const weight = data.weight;
     const ability = data.abilities[0].ability.name;
     const hodenAbility = data.abilities[1].ability.name;
-
-
-
     return {
-      name: pokemonName,
+      name: name,
       ability: pokemonAbility,
       imagePokemon: image,
       hpPokemon: life,
@@ -61,19 +62,59 @@ const getPokemon = async () => {
   }
 };
 
-getPokemon().then((pokemonData) => {
-  statusPokemon.title.innerHTML = pokemonData.name;
-  statusPokemon.imgPokemon.src = pokemonData.imagePokemon;
-  statusPokemon.hp.innerHTML = pokemonData.hpPokemon;
-  statusPokemon.type.innerHTML = pokemonData.style;
-  statusPokemon.attack.innerHTML = pokemonData.attack;
-  statusPokemon.defense.innerHTML = pokemonData.defense;
-  statusPokemon.specialAttack.innerHTML = pokemonData.specialAtt;
-  statusPokemon.specialDefense.innerHTML = pokemonData.specialDef;
-  statusPokemon.speed.innerHTML = pokemonData.speed;
-  statusPokemon.height.innerHTML = pokemonData.height;
-  statusPokemon.weight.innerHTML = pokemonData.weight;
-  statusPokemon.ability.innerHTML = pokemonData.ability;
-  statusPokemon.hodenAbility.innerHTML = pokemonData.hodenAbility;
-  console.log(pokemonData.pokemonStyle + hp);
-});
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+const setPokemon = (pokemonName) => {
+  getPokemon1(pokemonName).then((pokemonData) => {
+    statusPokemon.title.innerHTML = pokemonData.name;
+    statusPokemon.imgPokemon.src = pokemonData.imagePokemon;
+    statusPokemon.hp.innerHTML = pokemonData.hpPokemon;
+    statusPokemon.type.innerHTML = pokemonData.style;
+    statusPokemon.attack.innerHTML = pokemonData.attack;
+    statusPokemon.defense.innerHTML = pokemonData.defense;
+    statusPokemon.specialAttack.innerHTML = pokemonData.specialAtt;
+    statusPokemon.specialDefense.innerHTML = pokemonData.specialDef;
+    statusPokemon.speed.innerHTML = pokemonData.speed;
+    statusPokemon.height.innerHTML = pokemonData.height;
+    statusPokemon.weight.innerHTML = pokemonData.weight;
+    statusPokemon.ability.innerHTML = pokemonData.ability;
+    statusPokemon.hodenAbility.innerHTML = pokemonData.hodenAbility;
+    console.log(pokemonData.style + pokemonData.hpPokemon);
+  });
+}
+
+
+for (let key in pokemons) {
+  pokemons[key].addEventListener("click", function() {
+    switch (key) {
+      case "pokemon1":
+        setPokemon("flareon");
+          card.style.backgroundImage = "linear-gradient(0deg, #c71800 10%, #fcc245 100%)";
+          document.getElementById("myDropdown").classList.remove("show");
+        break;
+      case "pokemon2":
+        setPokemon("greninja");
+        card.style.backgroundImage = "linear-gradient(0deg, #19B5FE 10%, #FCC9B9 100%)";
+        document.getElementById("myDropdown").classList.remove("show");
+
+        break;
+      case "pokemon3":
+        setPokemon("houndoom");
+        card.style.backgroundImage = "linear-gradient(0deg, #F9690E 10%, #000 100%)";
+        document.getElementById("myDropdown").classList.remove("show");
+
+        break;
+      case "pokemon4":
+        setPokemon("mewtwo");
+        card.style.backgroundImage = "linear-gradient(0deg, #9B59B6 10%, #F3F3F3F3 100%)";
+        document.getElementById("myDropdown").classList.remove("show");
+
+
+        break;
+      default:
+        break;
+    }
+  });
+}

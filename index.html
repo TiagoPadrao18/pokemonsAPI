@@ -7,7 +7,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="card">
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Pokemons</button>
+        <div id="myDropdown" class="dropdown-content">
+          <p id="pokemon1">Flareon</p>
+          <p id="pokemon2">Greninja</p>
+          <p id="pokemon3">Houndoom</p>
+          <p id="pokemon4">Mewtwo</p>
+        </div>
+      </div> 
+
+    <div id="card">
         <img id="img" src="" alt="pokemon">
         <div class="containerStatus">
             <div class="type">
@@ -26,7 +36,7 @@
             <div class="containerFooter">
                 <div class="containerFooterLeft">
                     <p>Ability</p>
-                    <p id="ability">Flash-Fire</p>
+                    <p id="ability"></p>
                 </div>
                 <div class="containerFooterRight">
                     <p>Hoden-Ability</p>
