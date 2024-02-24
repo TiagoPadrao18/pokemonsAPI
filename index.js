@@ -11,7 +11,10 @@ const statusPokemon = {
   height: document.getElementById("height"),
   weight: document.getElementById("weight"),
   type: document.getElementById("style"),
-  defense: document.getElementById("defense")
+  defense: document.getElementById("defense"),
+  ability: document.getElementById("ability"),
+  hodenAbility: document.getElementById("hodenAbility")
+
 };
 
 console.log("ola");
@@ -30,6 +33,10 @@ const getPokemon = async () => {
     const specialAtt = data.stats[3].base_stat;
     const specialDef = data.stats[4].base_stat;
     const speed = data.stats[5].base_stat;
+    const height = data.height;
+    const weight = data.weight;
+    const ability = data.abilities[0].ability.name;
+    const hodenAbility = data.abilities[1].ability.name;
 
 
 
@@ -43,7 +50,11 @@ const getPokemon = async () => {
       defense: defense,
       specialAtt: specialAtt,
       specialDef: specialDef,
-      speed: speed
+      speed: speed,
+      height: height,
+      weight: weight,
+      ability: ability,
+      hodenAbility: hodenAbility
     };
   } catch (error) {
     console.log(error);
@@ -60,5 +71,9 @@ getPokemon().then((pokemonData) => {
   statusPokemon.specialAttack.innerHTML = pokemonData.specialAtt;
   statusPokemon.specialDefense.innerHTML = pokemonData.specialDef;
   statusPokemon.speed.innerHTML = pokemonData.speed;
+  statusPokemon.height.innerHTML = pokemonData.height;
+  statusPokemon.weight.innerHTML = pokemonData.weight;
+  statusPokemon.ability.innerHTML = pokemonData.ability;
+  statusPokemon.hodenAbility.innerHTML = pokemonData.hodenAbility;
   console.log(pokemonData.pokemonStyle + hp);
 });
