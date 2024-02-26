@@ -88,7 +88,9 @@ const setPokemon = (pokemonName) => {
     console.log(pokemonData.style + pokemonData.hpPokemon);
   });
 }
-
+setPokemon("flareon");
+card.style.backgroundImage = "linear-gradient(0deg, #c71800 10%, #fcc245 100%)";
+document.getElementById("myDropdown").classList.remove("show");
 
 for (let key in pokemons) {
   pokemons[key].addEventListener("click", ()=> {
